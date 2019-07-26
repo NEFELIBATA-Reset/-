@@ -1,0 +1,43 @@
+public class PalindromeList{
+	//找到中间节点
+​    public ListNode getMid(ListNode head){
+		ListNode fast=head;
+		ListNode slow=head;	
+		while(fast!=null){
+			fast=fast.next;
+			if(fast==null){
+				break;
+			}
+			slow=slow.next;
+			fast=fast.next;
+		}
+		return slow;
+    ​}   
+	//逆置从中间节点之后的链表
+    public ListNode reverse(ListNode head){
+		ListNode result=null;
+		ListNode cur=head;
+		while(cur!=null){
+			ListNode next=cur.next;		
+			cur.next=result;
+			result=cur;			
+			cur=next;
+		}
+		return result;
+    } 
+	//然后判断相等
+    public boolean checkPalindromeList(ListNode head){
+		ListNode mid=getMid(head);
+		ListNode node=reverse(mid);
+		ListNode p1=head;
+		ListNode p2=node;
+		while(p2!=null&&p1!=null){
+			if(p1.val!=p2,val){
+				return false;
+			}
+			p1=p1.next;
+			p2=p2.next;
+		}
+		return true;
+    }
+​}
