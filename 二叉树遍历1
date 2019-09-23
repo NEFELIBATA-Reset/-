@@ -1,0 +1,65 @@
+
+import java.util.*;
+
+public class Traversal{
+
+    private static class TreeNode{
+        char val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(char val){
+            this.val=val;
+        }
+        public String toString(){
+            return String.format("{%c}",val);
+        }
+    }
+    //建立二叉树
+    public static TreeNode buildTree(){
+        TreeNode a=new TreeNode('A');
+        TreeNode b=new TreeNode('B');
+        TreeNode c=new TreeNode('C');
+        TreeNode d=new TreeNode('D');
+        TreeNode e=new TreeNode('E');
+        TreeNode f=new TreeNode('F');
+        a.left=b;a.right=c;
+        b.left=d;c.left=e;c.right=f;
+        return a;
+    }
+    //直接打印
+
+    public static void preOrderTraversal1(TreeNode root){
+        if(root==null){
+            return;
+        }
+        System.out.println(root);
+        preOrderTraversal1(root.left);
+        preOrderTraversal1(root.right);
+    }
+    public static void inOrderTraversal1(TreeNode root){
+        if(root==null){
+           return;
+        }
+        inOrderTraversal1(root.left);
+        System.out.println(root);
+        inOrderTraversal1(root.right);
+    }
+    public static void postOrderTraversal1(TreeNode root){
+        if(root==null){
+           return;
+        }
+        postOrderTraversal1(root.left);
+        postOrderTraversal1(root.right);
+        System.out.println(root);
+    }
+
+
+    public static void main(String args[]){
+        TreeNode root=buildTree();
+        preOrderTraversal1(root);
+        System.out.println("=======================================");
+        inOrderTraversal1(root);
+        System.out.println("=======================================");
+        postOrderTraversal1(root);
+    }
+}
