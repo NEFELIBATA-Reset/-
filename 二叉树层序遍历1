@@ -1,0 +1,75 @@
+import java.util.*;
+
+public class LevelOrder {
+    private static class TreeNode{
+        char val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(char val){
+            this.val=val;
+        }
+        public String toString(){
+            return String.format("%d",val);
+        }
+    }
+    //建立二叉树
+    public static TreeNode buildTree(){
+        TreeNode a=new TreeNode('A');
+        TreeNode b=new TreeNode('B');
+        TreeNode c=new TreeNode('C');
+        TreeNode d=new TreeNode('D');
+        TreeNode e=new TreeNode('E');
+        TreeNode f=new TreeNode('F');
+        a.left=b;a.right=c;
+        b.left=d;c.left=e;c.right=f;
+        return a;
+    }
+
+    public static void levelOrder(TreeNode root){
+        Queue<TreeNode> queue=new LinkedList<>();
+        if(root==null){
+            return;
+        }
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            TreeNode front=queue.poll();
+            System.out.println(front.val);
+            if(front.left!=null){
+                queue.offer(front.left);
+            }
+            if(front.right!=null){
+                queue.offer(front.right);
+            }
+        }
+    }
+    private static class NodeLevel{
+        public TreeNode node;
+        public int level;
+        NodeLevel(TreeNode node,int level){
+            this.node=node;
+            this.level=level;
+        }
+    }
+    public static void levelOrder1(TreeNode root){
+        if(root==null){
+            return ;
+        }
+        Queue<NodeLevel> queue=new LinkedList<>();
+        queue.offer(new NodeLevel(root,1));
+        while(!queue.isEmpty()){
+            NodeLevel front=queue.poll();
+            System.out.println(front.level+":"+front.node.val);
+            if(front.node.left!=null){
+                queue.offer(new NodeLevel(front.node.left,front.level+1));
+            }
+            if(front.node.right!=null){
+                queue.offer(new NodeLevel(front.node.right,front.level+1));
+            }
+        }
+
+    }
+    public static void main(String[] args){
+        TreeNode root=buildTree();
+        levelOrder1(root);
+    }
+}
