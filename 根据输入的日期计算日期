@@ -1,0 +1,119 @@
+ 
+/*
+ * Date 	存储 年-月-日 信息
+ * 原则: 一切从用户角度出发
+ * 功能：
+ *		1） 初始化
+ *			i.	传入年/月/日
+ *			2.  不传，今天		回头
+ *		2） 多少天之后的年/月/日
+ *		3） 多少天之前的年/月/日
+ */
+ 
+ 
+class Date{
+	 public int year;
+	 public int month;
+	 public int day;
+ 
+	 
+	 public Date(int year,int month,int day){
+		 //年[1949,2049]
+		 if(year<1949||year>2049){
+			 System.err.println("你输入的年份不在范围内！");
+			 return;
+		 }
+		 //月[1,12]
+		  if(month<1||month>12){
+			 System.err.println("你输入的月份不在范围内！");
+			 return;
+		 }
+		 //天
+		  if(day<1||day>cal(year,month)){
+			 System.err.println("你输入的天数不在范围内！");
+			 return;
+		 }
+	
+		 this.year=year;
+		 this.month=month;
+		 this.day=day;
+		
+	 }
+	 
+	 public  int cal(int year,int month){
+		 //2月
+		 if(month==2){
+			 if(year%4==0&&year%100!=0){
+				return 29;
+			}
+			if(year%400==0){
+				return 29;
+			}
+		 }
+		 //4,6,9,11月
+		int[] thirty={4,6,9,11} ;
+		for(int i=0;i<thirty.length;i++){
+			if(month==thirty[i]){
+				return 30;
+			}
+		}
+		//1,3,5,7,8,10,12月
+		int[] thirtyone={1,3,5,7,8,10,12};
+		for(int i=0;i<thirtyone.length;i++){
+			if(month==thirtyone[i]){
+				return 31;
+			}
+		}
+		return 28;
+	 }
+	 //计算之后的时间
+	 public Date after(int day1){
+		 day+=day1;
+		 while(day>cal(year,month)){
+			 day-=cal(year,month);
+			 month+=1;
+			 if(month>12){
+				 month=1;
+				 year+=1;
+			 }
+		 }
+		 return this;
+	 }
+	 //计算之前的时间
+	 public Date before(int day2){
+		 if(day2<day){
+			 day-=day2;
+			 return this;
+		 }
+		while(day2>day){
+				month-=1;
+			day=cal(year,month)-(day2-day);	
+			if(month<1){
+				month=12;
+				year-=1;
+			}
+		} 
+		return this;
+	 }
+	 
+ 
+	public String toString(){
+		return String.format("%d-%d-%d",year,month,day);
+	}
+ 
+ }
+ public class TestDate{
+	 public static void main(String[] args){
+		Date now1=new Date(2019,7,20);
+		Date now2=new Date(2000,7,20);
+		Date a=now1.after(80);
+		Date b=now2.before(5);
+		System.out.println(a.toString());
+		System.out.println(b.toString());
+	}
+ }
+ 
+ 
+ 
+ 
+ 
