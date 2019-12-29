@@ -1,0 +1,24 @@
+public class ArrayAverage{
+	public static void main(String[] args){
+		int[] a={2,9,4,5,7,1,3,8,6,10};
+		System.out.println(average(a));
+	}
+	
+	public static double average(int[] a){
+		int sum=0;
+		int	max=Integer.MIN_VALUE;//Integer.MIN_VALUE表示整型中的最小值
+		int min=Integer.MAX_VALUE;//Integer.MAX_VALUE表示整型中的最大值
+		
+		for(int i=0;i<a.length;i++){
+			sum+=a[i];//求数组元素的和
+			if(a[i]>max){//找出最大值
+				max=a[i];
+			}
+			if(a[i]<min){//找出最小值
+				min=a[i];
+			}    
+		}
+		
+		return (double)(sum - max-min)/(a.length-2);//和减去最大最小值，之后求平均值，这里要将int转为double
+	}
+}
