@@ -1,0 +1,21 @@
+ 
+ 
+//0  1  2
+public class Hanoi{
+    private static int n=4;
+	public static void main(String[] args){
+		
+		move(n,0,1);
+	}
+	//n代表移动几个盘子，source代表原柱子，dest表示目的柱子
+	public static void move(int n,int source,int dest){
+		if(n==1){
+			System.out.printf("从 %d 移到 %d ",source,dest);
+		}else{
+			int other=3-source-dest;
+			move(n-1,source,other);//移动n-1盘子从source到other
+			System.out.printf("从 %d 移到 %d%n", source, dest);//移动最后一个盘子从source到dest
+			move(n-1,other,dest);//移动n-1盘子从other到dest
+		}	
+	}
+}
