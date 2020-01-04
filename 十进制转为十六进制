@@ -1,0 +1,45 @@
+ 
+import java.util.Scanner;
+public class DecToHex{
+	public static void main(String[] args){
+		Scanner input=new Scanner(System.in);
+		int n=input.nextInt();
+		
+		System.out.println(decToDec(n));
+	}	
+	
+	//反转字符串
+	public static String reverse(String s){
+		int length=s.length();
+		String r="";
+		for(int i=length-1;i>=0;i--){
+			r+=s.charAt(i);//charAt(int)表示返回char指定索引处的值
+		}
+		return r;
+	}
+	
+	
+ 
+	public static String decToDec(int n){
+		String r="";//定义字符串并初始化
+	
+		while(n>0){//只要输入的十进制大于0，就一直循环
+			int yushu=n%16;
+			//16进制表示0~9，'A','B','C','D','E','F'
+			if(yushu >9){//余数大于9，
+				char c=(char)(yushu-10+'A');//这块要强转为字符型
+				r+=c;
+			}else{
+				r+=yushu;
+			}
+			
+			n=n/16;
+		}
+		return reverse(r);//调用反转字符串函数
+	}
+	
+	
+ 
+ 
+ 
+}
