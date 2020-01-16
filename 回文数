@@ -1,0 +1,15 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        String s=String.valueOf(x);
+        char[] a=s.toCharArray();
+        int len=a.length-1;
+        int i=0;
+        while(len>i){
+            if(a[len--]!=a[i++]){
+                return false;
+            }
+
+        }
+        return true;
+    }
+}
