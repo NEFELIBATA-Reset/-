@@ -1,0 +1,61 @@
+ 
+import java.util.Arrays;
+ 
+public class BubleSort {
+	/*
+	 * 冒泡排序
+	 */
+	public static void bubbleSort(DataWrap[] data){
+		boolean change=true;
+		for (int i = 0; i < data.length-1 &&change; i++) {
+			change=false;
+			for (int j = 0; j < data.length-1-i; j++) {
+				if(data[j].compareTo(data[j+1])>0){
+					change=true;
+					DataWrap tempDataWrap=data[j];
+					data[j]=data[j+1];
+					data[j+1]=tempDataWrap;
+				}
+			}
+		}
+	}
+    public static void main(String[] args) {  
+        DataWrap[] dataWraps={  
+                new DataWrap(21,""),  
+                new DataWrap(31,""),  
+                new DataWrap(2,""),  
+                new DataWrap(2338,"*"),  
+                new DataWrap(2122,""),  
+                new DataWrap(22,""),  
+                new DataWrap(55,""),  
+                new DataWrap(134,""),  
+                new DataWrap(24000,"")  
+        };  
+        System.out.println("排序之前："+Arrays.toString(dataWraps));  
+        bubbleSort(dataWraps);  
+        System.out.println("排序之后："+Arrays.toString(dataWraps));  
+    }
+}
+/*
+*定义一个数据包装类
+*/
+class DataWrap implements Comparable<DataWrap>{
+	int data;
+	String flag;
+	public DataWrap() {
+		// TODO Auto-generated constructor stub
+	}
+	public DataWrap(int data,String flag) {
+		this.data=data;
+		this.flag=flag;
+	}
+	@Override
+	public String toString(){
+		return data+flag;
+	}
+	@Override
+	public int compareTo(DataWrap o) {
+		// TODO Auto-generated method stub
+		return this.data>o.data?1:(this.data==o.data?0:-1);
+	}
+}
