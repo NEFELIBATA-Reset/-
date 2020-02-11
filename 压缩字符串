@@ -1,0 +1,19 @@
+class Solution {
+    public int compress(char[] chars) {
+        int j = 0; 
+        int w = 0;
+        for (int i = 0; i < chars.length; i++) {
+            if (i + 1 == chars.length || chars[i + 1] != chars[i]) {
+                chars[w++] = chars[j];
+                if (i > j) {
+                    for (char c: ("" + (i - j + 1)).toCharArray()) {
+                        chars[w++] = c;
+                    }
+                }
+                j = i + 1;
+            }
+        }
+        return w;
+    }
+}
+
