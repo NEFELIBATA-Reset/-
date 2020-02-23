@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+import java.util.*;
+public class Solution {
+    public ArrayList<String> Permutation(String str) {
+       ArrayList<String> list=new ArrayList<>();
+        if(str!=null){
+            fun(str.toCharArray(),0,list);
+            Collections.sort(list);
+        }
+        return list;
+    }
+    public void fun(char[] a,int i,ArrayList<String> list){
+        if(i==a.length-1){
+            list.add(String.valueOf(a));
+        }else{
+            Set<Character> set=new HashSet<>();
+            for(int j=i;j<a.length;++j){
+                if(j==i||!set.contains(a[j])){
+                    set.add(a[j]);
+                    change(a,i,j);
+                    fun(a,i+1,list);
+                    change(a,j,i);
+                }
+            }
+        }
+        
+    }
+    public void change(char[] s,int i,int j){
+        char t=s[i];
+        s[i]=s[j];
+        s[j]=t;
+    }
+}
