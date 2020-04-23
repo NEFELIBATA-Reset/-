@@ -13,6 +13,11 @@ public class LevelOrder {
         }
     }
     //建立二叉树
+    /*
+         a
+       b   c
+      d   e  f
+    */
     public static TreeNode buildTree(){
         TreeNode a=new TreeNode('A');
         TreeNode b=new TreeNode('B');
@@ -26,17 +31,18 @@ public class LevelOrder {
     }
 
     public static void levelOrder(TreeNode root){
-        Queue<TreeNode> queue=new LinkedList<>();
+        Queue<TreeNode> queue=new LinkedList<>();//定义队列
         if(root==null){
             return;
         }
-        queue.offer(root);
-        while(!queue.isEmpty()){
-            TreeNode front=queue.poll();
-            System.out.println(front.val);
-            if(front.left!=null){
+        queue.offer(root);//将根结点放入队列
+        while(!queue.isEmpty()){/只要队列不为空，就一直循环
+            TreeNode front=queue.poll();//定义一个结点等于出队列结点
+            System.out.println(front.val);//打印这个结点值
+            if(front.left!=null){//如果这个结点的左结点不为空，就将结点的左结点入队列
                 queue.offer(front.left);
             }
+            //同理，如果这个结点的右结点不为空，就将这个右结点加入队列
             if(front.right!=null){
                 queue.offer(front.right);
             }
@@ -50,6 +56,7 @@ public class LevelOrder {
             this.level=level;
         }
     }
+    
     public static void levelOrder1(TreeNode root){
         if(root==null){
             return ;
