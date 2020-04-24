@@ -33,21 +33,22 @@ public class Level {
         }
         Queue<TreeNode> queue=new LinkedList<TreeNode>();
         queue.add(root);
-        while(!queue.isEmpty()){
-            int count=queue.size();
-            List<Character> list1=new ArrayList<>();
-            while(count>0){
-                TreeNode node=queue.poll();
-                list1.add(node.val);
+        while(!queue.isEmpty()){//只要队列不为空，就一直循环
+            int count=queue.size();//对列的长度
+            List<Character> list1=new ArrayList<>();//定义链表
+            while(count>0){只要长度大于0
+                TreeNode node=queue.poll();//出队列
+                list1.add(node.val);//添加到链表里
+                //如果左子树不为空，入队列，右子树同理
                 if(node.left!=null){
                     queue.offer(node.left);
                 }
                 if(node.right!=null){
                     queue.offer(node.right);
                 }
-                count--;
+                count--;//长度减1
             }
-            list.add(list1);
+            list.add(list1);//将list添加到list<List<Character>>里
         }
         return list;
     }
