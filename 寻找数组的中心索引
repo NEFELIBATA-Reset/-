@@ -5,11 +5,11 @@ class Solution {
         }
         int sum=0;
         int sumbin=0;
-        for(int i=0;i<nums.length;i++){
-            sum+=nums[i];
+        for(int i=0;i<nums.length;i++){//遍历数组
+            sum+=nums[i];//求和
         }
-        for(int i=0;i<nums.length;i++){
-            if(sumbin*2+nums[i]==sum){
+        for(int i=0;i<nums.length;i++){//遍历数组
+            if(sumbin*2+nums[i]==sum){中心位数和两边的和相加应该等于总和，如果不等于，那左边应该继续遍历求和
                 return i; 
             }
             sumbin+=nums[i];
