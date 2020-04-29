@@ -1,8 +1,10 @@
 class Solution {
     public int thirdMax(int[] nums) {
+//定义三个数均为最小值
        long max1=Long.MIN_VALUE;
         long max2=Long.MIN_VALUE;
         long max3=Long.MIN_VALUE;
+        //遍历数组，分别与这三个数作比较
         for(long num:nums){
             if(num>max1){
                 max3=max2;
@@ -15,6 +17,7 @@ class Solution {
                 max3=num;
             }
         }
+        
         if(max3==Long.MIN_VALUE||max3==max2){
             return (int)max1;
         }else{
