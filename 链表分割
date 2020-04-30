@@ -11,13 +11,16 @@ public class ListNode {
 }*/
 public class Partition {
     public ListNode partition(ListNode pHead, int x) {
+//定义大小链表，并定义大小链表的最后一个链表结点
         // write code here
         ListNode small=null;
         ListNode smalllast=null;
         ListNode big=null;
         ListNode biglast=null;
         ListNode cur=pHead;
+//遍历链表
         while(cur!=null){
+//如果val小于指定值，放入小链表中
             if(cur.val<x){
                 if(small==null){
                     small=cur;
@@ -26,6 +29,7 @@ public class Partition {
                 }
                 smalllast=cur;
             }else{
+//反之，放入大链表
                 if(big==null){
                     big=cur;
                 }else{
@@ -35,9 +39,10 @@ public class Partition {
             }
             cur=cur.next;
         }
+//如果小链表为空，直接返回大链表
         if(small==null){
             return big;
-        }else{
+        }else{//反之，将大链表放在小链表之后
             smalllast.next=big;
             if(biglast!=null){
                 biglast.next=null;
