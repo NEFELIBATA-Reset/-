@@ -1,10 +1,10 @@
 class Solution {
     public int lengthOfLastWord(String s) {
-        String[] arr=s.split(" ");
+        String[] arr=s.split(" ");//将字符串按照空格分离为字符串数组
         if(arr.length==0){
             return 0;
         }
-        char[] a=arr[arr.length-1].toCharArray();
-        return a.length;
+        char[] a=arr[arr.length-1].toCharArray();//将字符串数组最后一个元素用toCharArray()方法转化为字符数组
+        return a.length;//返回字符数组的长度就是最后一个单词的长度
     }
 }
