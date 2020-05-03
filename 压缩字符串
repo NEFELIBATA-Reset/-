@@ -3,9 +3,9 @@ class Solution {
         int j = 0; 
         int w = 0;
         for (int i = 0; i < chars.length; i++) {
-            if (i + 1 == chars.length || chars[i + 1] != chars[i]) {
-                chars[w++] = chars[j];
-                if (i > j) {
+            if (i + 1 == chars.length || chars[i + 1] != chars[i]) {//如果元素不等于他的前一个元素
+                chars[w++] = chars[j];//元素不变
+                if (i > j) {//说明一直有重复的元素
                     for (char c: ("" + (i - j + 1)).toCharArray()) {
                         chars[w++] = c;
                     }
