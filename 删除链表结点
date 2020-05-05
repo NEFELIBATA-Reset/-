@@ -6,9 +6,12 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+ //1->2->4->3->null
+ //1->2->3->null
+ //node.next=node.next.next
 class Solution {
     public void deleteNode(ListNode node) {
        node.val=node.next.val;
-        node.next=node.next.next;
+        ;
     }
 }
