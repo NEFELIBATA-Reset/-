@@ -1,8 +1,8 @@
 class Solution {
     public String toLowerCase(String str) {
-        char[] a=str.toCharArray();
-        for(int i=0;i<a.length;i++){
-            if(a[i]>='A'&a[i]<='Z'){
+        char[] a=str.toCharArray();//字符串转字符数组
+        for(int i=0;i<a.length;i++){//遍历数组
+            if(a[i]>='A'&a[i]<='Z'){//如果在A-Z区间
                 a[i]+='a'-'A';
             }
         }
