@@ -1,22 +1,23 @@
 class Solution {
     public int findUnsortedSubarray(int[] nums) {
+    //定义左右下标
         int left=-1;
         int right=-1;
        
-        for(int i=0;i<nums.length-1;i++){
-            for(int j=i+1;j<nums.length;j++){
-                if(nums[i]>nums[j]){
+        for(int i=0;i<nums.length-1;i++){//遍历数组
+            for(int j=i+1;j<nums.length;j++){//从i的后一个开始遍历
+                if(nums[i]>nums[j]){//如果前面大于后面，left=i
                     left=i;
-                    break;
+                    break;i
                 }
             }
             if(left!=-1){
                 break;
             }
         }
-        for(int i=nums.length-1;i>=0;i--){
+        for(int i=nums.length-1;i>=0;i--){//从后往前遍历
             for(int j=i-1;j>=0;j--){
-                if(nums[i]<nums[j]){
+                if(nums[i]<nums[j]){//如果小于，赋给right
                     right=i;
                     break;
                 }
@@ -25,7 +26,7 @@ class Solution {
                 break;
             }
         }
-        if(left==-1&&right==-1){
+        if(left==-1&&right==-1){//代表数组里没有连续的
             return 0;
         }else{
             return right-left+1;
