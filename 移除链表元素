@@ -3,13 +3,13 @@ class Solution {
         ListNode prev=null;
         ListNode cur=head;
         while(cur!=null){
-            if(cur.val==val){
-                if(cur==head){
-                    head=cur.next;
+            if(cur.val==val){//如果链表结点的值和给定元素的值相同
+                if(cur==head){//如果此时是头结点
+                    head=cur.next;//那此时头结点就是源头节点的下一个
                 }else{
                     prev.next=cur.next;
                 }
-            }else{
+            }else{//如果不相等，继续在原链表
                 prev=cur;
             }
              cur=cur.next;
