@@ -2,13 +2,15 @@ import java.util.*;
 public class Solution {
     public int FindGreatestSumOfSubArray(int[] array) {
         int sum=0;
-        int summax=Integer.MIN_VALUE;
-        for(int i=0;i<array.length;i++){
+        int summax=Integer.MIN_VALUE;//定义最小值
+        for(int i=0;i<array.length;i++){//遍历数组
+        //只要sum是正数，就一直加加
             if(sum<=0){
                 sum=array[i];
             }else{
                 sum+=array[i];
             }
+            //如果sum>summax，就交换两个数字的值
             if(sum>summax){
                 summax=sum;
             }
